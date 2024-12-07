@@ -69,7 +69,7 @@ public class Map {
      * Выводит карту на экран
      */
     public void outputToScreen(){
-        System.out.print("   ");
+        System.out.print("   "); //toDo при указании размера полей выше 10 все разьедется, нужно учесть
         for (int j = 0; j < this.horizontalCount; j++) {
             System.out.print(" " + j + " ");
         }
