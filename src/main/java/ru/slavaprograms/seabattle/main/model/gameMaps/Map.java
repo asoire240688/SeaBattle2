@@ -94,10 +94,17 @@ public class Map {
         boolean result = true;
         int horizontalPos = coordinate.getHorizontalCoordinate();
         int verticalPos   = coordinate.getVerticalCoordinate();
+        int positionCount;
 
         // Проверим на занятость ячеек явно
         if (horizontal){
-            for (int i = horizontalPos; i < (size + horizontalPos); i++) {
+            positionCount = size + horizontalPos;
+            // Проверим на границы полей
+            if(positionCount > this.horizontalCount){
+                System.out.println("Помещаемый корабль выходит за рамки карты по горизонтали...");
+                return false;
+            }
+            for (int i = horizontalPos; i < positionCount; i++) {
                 if (!this.gameMap[verticalPos][i].equals(fillerSea())){
                     result = false;
                     break;
@@ -106,7 +113,13 @@ public class Map {
             }
         }
         else {
-            for (int i = verticalPos; i < (size + verticalPos); i++) {
+            positionCount = size + verticalPos;
+            // Проверим на границы полей
+            if(positionCount > verticalCount){
+                System.out.println("Помещаемый корабль выходит за рамки карты по вертикали...");
+                return false;
+            }
+            for (int i = verticalPos; i < positionCount; i++) {
                 if (!this.gameMap[i][horizontalPos].equals(fillerSea())){
                     result = false;
                     break;

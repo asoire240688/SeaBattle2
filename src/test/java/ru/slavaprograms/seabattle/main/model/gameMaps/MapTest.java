@@ -25,6 +25,9 @@ class MapTest {
         Coordinate coordinate5 = new Coordinate(3,3);
         map.shipAdd(coordinate5, true, ShipClassification.FREGAT);
 
+        Coordinate coordinate6 = new Coordinate(9,3);
+        map.shipAdd(coordinate6, false, ShipClassification.CRUISER);
+
         map.outputToScreen();
     }
 }
