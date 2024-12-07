@@ -28,4 +28,21 @@ public class Game {
         Player player = new Player(name, new Map(horizontalCount, verticalCount));
         players.put(name, player);
     }
+
+    /**
+     * Возвращает игрока по имени
+     * @param name Имя игрока
+     * @return Игрок
+     */
+    public Player getPlayer(String name){
+        return players.get(name);
+    }
+
+    /**
+     * Возвращает игроков
+     * @return Коллекция игроков
+     */
+    public HashMap<String, Player> getPlayers() {
+        return players;
+    }
 }

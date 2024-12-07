@@ -16,10 +16,18 @@ public class Player {
         this.map = map;
     }
 
+    /**
+     * Возвращает имя игрока
+     * @return Имя игрока
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Возвращает карту игрока
+     * @return Карта игрока
+     */
     public Map getMap() {
         return map;
     }
