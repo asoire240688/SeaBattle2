@@ -135,7 +135,7 @@ public class Map {
      * Возвращает наполнитель ячейки море
      * @return Наполнитель море
      */
-    private String fillerSea(){
+    public static String fillerSea(){
         return "~";
     }
 
@@ -143,8 +143,24 @@ public class Map {
      * Возвращает наполнитель ячейки корабль
      * @return Наполнитель корабль
      */
-    private String fillerShip(){
+    public static String fillerShip(){
         return "O";
+    }
+
+    /**
+     * Возвращает наполнитель ячейки - Попадание
+     * @return Наполнитель попадание
+     */
+    public static String fillerShot(){
+        return "X";
+    }
+
+    /**
+     * Возвращает наполнитель ячейки - Промах
+     * @return Наполнитель промах
+     */
+    public static String fillerMissed(){
+        return "*";
     }
 
     /**
@@ -161,5 +177,29 @@ public class Map {
      */
     public int getVerticalCount() {
         return verticalCount;
+    }
+
+    /**
+     * Возвращает значение ячейки карты
+     * @param coordinate Координаты
+     * @return Значение ячейки
+     */
+    public String getValueOfCell(Coordinate coordinate){
+        String result = "";
+        try{
+            result = this.gameMap[coordinate.getVerticalCoordinate()][coordinate.getVerticalCoordinate()];
+        }catch (Exception e){
+            result = fillerSea();
+        }
+        return result;
+    }
+
+    /**
+     * Устанавливает значение ячейки
+     * @param coordinate Координаты
+     * @param value Значение
+     */
+    public void setValueOfCell(Coordinate coordinate, String value){
+        this.gameMap[coordinate.getVerticalCoordinate()][coordinate.getVerticalCoordinate()] = value;
     }
 }
