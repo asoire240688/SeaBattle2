@@ -146,4 +146,20 @@ public class Map {
     private String fillerShip(){
         return "O";
     }
+
+    /**
+     * Возвращет количество горизонтальных ячеек
+     * @return Количество горизонтальных ячеек
+     */
+    public int getHorizontalCount() {
+        return horizontalCount;
+    }
+
+    /**
+     * Возвращает количество вертикальных ячеек
+     * @return Количество вертикальных ячеек
+     */
+    public int getVerticalCount() {
+        return verticalCount;
+    }
 }
