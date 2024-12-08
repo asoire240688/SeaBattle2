@@ -48,20 +48,15 @@ public class PlayerMenu {
                     break;
                 }
                 ShipClassification shipClassification = Classification.getShipClass(className);
-                System.out.print("Введите координаты горизонтали, вертикали " +
-                        "через запятую например 0,1: ");
-                String coordinates = in.nextLine();
-                String[] crds = coordinates.split(",");
-                int horizontalCrd = Integer.parseInt(crds[0]);
-                int verticalCrd = Integer.parseInt(crds[1]);
+                Coordinate coordinate = Coordinate.enterCoordinate();
+
                 System.out.print("Введите расположение горизонтальное(0), вертикальное(1): ");
                 String vector = in.nextLine();
                 boolean horizontal = false;
                 if(vector.equals("0")){
                     horizontal = true;
                 }
-                map.shipAdd(new Coordinate(horizontalCrd
-                        , verticalCrd), horizontal, shipClassification);
+                map.shipAdd(coordinate, horizontal, shipClassification);
                 map.outputToScreen();
                 System.out.println(ConsoleMenu.splitter);
             }
