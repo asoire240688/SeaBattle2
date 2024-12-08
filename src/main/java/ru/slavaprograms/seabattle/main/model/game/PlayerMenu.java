@@ -20,6 +20,10 @@ public class PlayerMenu {
         game.playerAdd(player1Name);
         game.playerAdd(player2Name);
         shipToPlace(game);
+
+        // Запускает бой
+        BattleMenu battleMenu = new BattleMenu();
+        battleMenu.menuOpen(game);
     }
 
     private void shipToPlace(Game game){

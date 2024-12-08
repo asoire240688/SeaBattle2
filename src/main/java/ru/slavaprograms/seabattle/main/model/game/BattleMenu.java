@@ -2,9 +2,10 @@ package ru.slavaprograms.seabattle.main.model.game;
 
 import ru.slavaprograms.seabattle.main.model.gameMaps.Coordinate;
 import ru.slavaprograms.seabattle.main.model.gameMaps.Map;
+import ru.slavaprograms.seabattle.main.model.player.Player;
 
+import java.util.HashMap;
 import java.util.Scanner;
-import java.util.SortedMap;
 
 /**
  * Меню проведения боя
@@ -16,11 +17,22 @@ public class BattleMenu {
      * @param game Игра
      */
     public void menuOpen(Game game){
-        Scanner in = new Scanner(System.in);
-        System.out.println(ConsoleMenu.splitter);
-        System.out.print("Введите размер карты по горизонтали: ");
-        int horizontalSize = in.nextInt();
-        System.out.print("Введите размер карты по вертикали: ");
+        HashMap<String, Player> players = game.getPlayers();
+        while (!game.gameOver()){
+            System.out.println(ConsoleMenu.splitter);
+            Scanner in = new Scanner(System.in);
+            System.out.print("Введите имя игрока начинающего стрельбу: ");
+            String playerFireName = in.nextLine();
+            System.out.print("Введите имя противника: ");
+            String playerTargetName = in.nextLine();
+            if(playerFireName.equals("EXT") || playerTargetName.equals("EXT")){
+                break;
+            }
+            Player playerFire     = players.get(playerFireName);
+            Player playerTarget   = players.get(playerTargetName);
+            Coordinate coordinateTarget = Coordinate.enterCoordinate();
+            fire(coordinateTarget, playerTarget.getMap(), playerFire.getMarksMap());
+        }
     }
 
     /**
