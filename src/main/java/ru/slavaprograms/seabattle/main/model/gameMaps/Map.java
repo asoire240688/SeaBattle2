@@ -55,12 +55,14 @@ public class Map {
 
         if (horizontal){
             for (int i = horizontalPos; i < (size + horizontalPos); i++) {
-                this.gameMap[verticalPos][i] = fillerShip();
+                setValueOfCell(new Coordinate(i, verticalPos), fillerShip());
+                //this.gameMap[verticalPos][i] = fillerShip();
             }
         }
         else {
             for (int i = verticalPos; i < (size + verticalPos); i++) {
-                this.gameMap[i][horizontalPos] = fillerShip();
+                setValueOfCell(new Coordinate(horizontalPos, i), fillerShip());
+                //this.gameMap[i][horizontalPos] = fillerShip();
             }
         }
     }
@@ -77,7 +79,8 @@ public class Map {
         for (int i = 0; i < this.verticalCount; i++) {
             System.out.print(" " + i + " ");
             for (int j = 0; j < this.horizontalCount; j++) {
-                System.out.print(" " + this.gameMap [i][j] + " ");
+                System.out.print(" " + getValueOfCell(new Coordinate(j, i)) + " ");
+                //System.out.print(" " + this.gameMap [i][j] + " ");
             }
             System.out.println();
         }
@@ -187,7 +190,7 @@ public class Map {
     public String getValueOfCell(Coordinate coordinate){
         String result = "";
         try{
-            result = this.gameMap[coordinate.getVerticalCoordinate()][coordinate.getVerticalCoordinate()];
+            result = this.gameMap[coordinate.getVerticalCoordinate()][coordinate.getHorizontalCoordinate()];
         }catch (Exception e){
             result = fillerSea();
         }
@@ -200,6 +203,6 @@ public class Map {
      * @param value Значение
      */
     public void setValueOfCell(Coordinate coordinate, String value){
-        this.gameMap[coordinate.getVerticalCoordinate()][coordinate.getVerticalCoordinate()] = value;
+        this.gameMap[coordinate.getVerticalCoordinate()][coordinate.getHorizontalCoordinate()] = value;
     }
 }
